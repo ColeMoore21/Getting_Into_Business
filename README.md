@@ -124,6 +124,8 @@ Sqft Basement</td>
 
     library(knitr)
     library(kableExtra)
+    library(ggplot2)
+
 
     # Create a table for dataset attributes
     attributes_table <- data.frame(
@@ -385,6 +387,8 @@ Nominal
     library(readr)
     library(knitr)
     library(kableExtra)
+    library(ggplot2)
+
 
     # Load the dataset (make sure the CSV is in your working directory or adjust the path)
     df <- read_csv("USA Housing Dataset.csv")
@@ -877,3 +881,635 @@ yr\_renovated
 </tr>
 </tbody>
 </table>
+
+------------------------------------------------------------------------
+
+### **Missing and Empty Values**
+
+In this section, we examine whether the dataset contains any missing
+(`NA`) or empty (`""`) values and discuss how to handle them
+appropriately.
+
+    # Count missing or empty values in each column
+    # Identify missing (NA) values for all columns
+    missing_na <- sapply(df, function(x) sum(is.na(x)))
+
+    # Identify empty strings only for character columns
+    missing_empty <- sapply(df, function(x) {
+      if (is.character(x)) sum(x == "")
+      else 0
+    })
+
+    # Combine results
+    na_summary <- data.frame(
+      Variable = names(df),
+      Missing_Values = missing_na + missing_empty
+    )
+
+    # Display formatted table
+    kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
+      kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
+      column_spec(1, bold = TRUE)
+
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>
+Missing or Empty Values by Variable
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:right;">
+Missing\_Values
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+date
+</td>
+<td style="text-align:left;">
+date
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+price
+</td>
+<td style="text-align:left;">
+price
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+bedrooms
+</td>
+<td style="text-align:left;">
+bedrooms
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+bathrooms
+</td>
+<td style="text-align:left;">
+bathrooms
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+sqft\_living
+</td>
+<td style="text-align:left;">
+sqft\_living
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+sqft\_lot
+</td>
+<td style="text-align:left;">
+sqft\_lot
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+floors
+</td>
+<td style="text-align:left;">
+floors
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+waterfront
+</td>
+<td style="text-align:left;">
+waterfront
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+view
+</td>
+<td style="text-align:left;">
+view
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+condition
+</td>
+<td style="text-align:left;">
+condition
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+sqft\_above
+</td>
+<td style="text-align:left;">
+sqft\_above
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+sqft\_basement
+</td>
+<td style="text-align:left;">
+sqft\_basement
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+yr\_built
+</td>
+<td style="text-align:left;">
+yr\_built
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+yr\_renovated
+</td>
+<td style="text-align:left;">
+yr\_renovated
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+street
+</td>
+<td style="text-align:left;">
+street
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+city
+</td>
+<td style="text-align:left;">
+city
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+statezip
+</td>
+<td style="text-align:left;">
+statezip
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+country
+</td>
+<td style="text-align:left;">
+country
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+
+    na_summary <- data.frame(Variable = names(na_summary), Missing_Values = na_summary)
+
+    # Display as formatted table
+    kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
+      kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
+      column_spec(1, bold = TRUE)
+
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<caption>
+Missing or Empty Values by Variable
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Missing\_Values.Variable
+</th>
+<th style="text-align:right;">
+Missing\_Values.Missing\_Values
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+date
+</td>
+<td style="text-align:left;">
+Variable
+</td>
+<td style="text-align:left;">
+date
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+price
+</td>
+<td style="text-align:left;">
+Missing\_Values
+</td>
+<td style="text-align:left;">
+price
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+bedrooms
+</td>
+<td style="text-align:left;">
+Variable
+</td>
+<td style="text-align:left;">
+bedrooms
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+bathrooms
+</td>
+<td style="text-align:left;">
+Missing\_Values
+</td>
+<td style="text-align:left;">
+bathrooms
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+sqft\_living
+</td>
+<td style="text-align:left;">
+Variable
+</td>
+<td style="text-align:left;">
+sqft\_living
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+sqft\_lot
+</td>
+<td style="text-align:left;">
+Missing\_Values
+</td>
+<td style="text-align:left;">
+sqft\_lot
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+floors
+</td>
+<td style="text-align:left;">
+Variable
+</td>
+<td style="text-align:left;">
+floors
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+waterfront
+</td>
+<td style="text-align:left;">
+Missing\_Values
+</td>
+<td style="text-align:left;">
+waterfront
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+view
+</td>
+<td style="text-align:left;">
+Variable
+</td>
+<td style="text-align:left;">
+view
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+condition
+</td>
+<td style="text-align:left;">
+Missing\_Values
+</td>
+<td style="text-align:left;">
+condition
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+sqft\_above
+</td>
+<td style="text-align:left;">
+Variable
+</td>
+<td style="text-align:left;">
+sqft\_above
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+sqft\_basement
+</td>
+<td style="text-align:left;">
+Missing\_Values
+</td>
+<td style="text-align:left;">
+sqft\_basement
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+yr\_built
+</td>
+<td style="text-align:left;">
+Variable
+</td>
+<td style="text-align:left;">
+yr\_built
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+yr\_renovated
+</td>
+<td style="text-align:left;">
+Missing\_Values
+</td>
+<td style="text-align:left;">
+yr\_renovated
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+street
+</td>
+<td style="text-align:left;">
+Variable
+</td>
+<td style="text-align:left;">
+street
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+city
+</td>
+<td style="text-align:left;">
+Missing\_Values
+</td>
+<td style="text-align:left;">
+city
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+statezip
+</td>
+<td style="text-align:left;">
+Variable
+</td>
+<td style="text-align:left;">
+statezip
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+country
+</td>
+<td style="text-align:left;">
+Missing\_Values
+</td>
+<td style="text-align:left;">
+country
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+
+    ggplot(df, aes(x = price)) +
+      geom_histogram(fill = "skyblue", bins = 30, color = "black") +
+      labs(title = "Distribution of Home Prices", x = "Price (USD)", y = "Count")
+
+![](README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+
+    ggplot(df, aes(x = factor(bedrooms), y = price)) +
+      geom_boxplot(fill = "lightgreen") +
+      labs(title = "Price by Number of Bedrooms", x = "Bedrooms", y = "Price (USD)")
+
+![](README_files/figure-markdown_strict/unnamed-chunk-4-2.png)
+
+    ggplot(df, aes(x = sqft_living, y = price)) +
+      geom_point(alpha = 0.5) +
+      geom_smooth(method = "lm", se = FALSE, color = "darkred") +
+      labs(title = "Price vs. Square Footage", x = "Living Area (sqft)", y = "Price (USD)")
+
+    ## `geom_smooth()` using formula = 'y ~ x'
+
+![](README_files/figure-markdown_strict/unnamed-chunk-4-3.png)
+
+------------------------------------------------------------------------
+
+### **3. Expanding Your Investment Knowledge**
+
+While this dataset offers a great snapshot of property characteristics
+and prices, supplementing it with additional data sources can provide
+deeper insights and improve investment decisions.
+
+#### Additional Dataset: Zillow Home Value Index (ZHVI)
+
+-   **Source:** [Zillow Research – ZHVI
+    Data](https://www.zillow.com/research/data/)
+-   **Description:** The Zillow Home Value Index (ZHVI) tracks monthly
+    median home values across regions, including ZIP codes, cities,
+    counties, and metropolitan areas.
+
+#### Why is this dataset useful?
+
+-   It provides time series data, allowing investors to analyze
+    historical price trends and forecast future appreciation.
+-   It includes geographic variation, letting investors compare how
+    property values change over time in different markets.
+
+#### How does it complement your current data?
+
+-   The current dataset is cross-sectional (a snapshot in time), while
+    the ZHVI adds a temporal dimension.
+-   By combining both, you could identify properties in regions that not
+    only have good current value but also show strong long-term growth
+    trends.
+-   It can help refine location-based investment decisions, guiding you
+    toward markets with the best growth potential.
+
+You can explore or download the ZHVI dataset here:  
+**[Zillow Home Value Index
+(ZHVI)](https://www.zillow.com/research/data/)**
+
+------------------------------------------------------------------------
+
+### **4. Communicating Your Findings**
+
+This analysis helps make real estate investment more approachable by
+exploring key features that influence home prices, such as square
+footage, number of bedrooms, and location. We’ve also addressed data
+quality by checking for missing values and visualized trends that affect
+investment decisions.
+
+Even without prior real estate or data experience, readers can now: -
+Understand what attributes impact home value. - Identify how trends like
+larger living space or better condition contribute to pricing. - See how
+public datasets can be used to guide real-world investment strategy.
+
+Our dataset gave us a snapshot of housing conditions across U.S. states.
+By examining average prices and property features, and supplementing
+with growth trend data (like Zillow’s ZHVI), investors can target areas
+with both good current value and long-term appreciation potential.
+
+------------------------------------------------------------------------
+
+### **Reproducibility and Data Access**
+
+The dataset used in this project is available on Kaggle:
+
+**Data Link:**
+<https://www.kaggle.com/datasets/fratzcan/usa-house-prices>
+
+Since Kaggle requires login and sometimes API authentication, it’s
+recommended to manually download the CSV and load it like this:
+
+    # Load CSV after manually downloading from Kaggle
+    df <- read_csv("USA Housing Dataset.csv")
+
+    ## Rows: 4140 Columns: 18
+    ## ── Column specification ───────────────────────────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr   (4): street, city, statezip, country
+    ## dbl  (13): price, bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition, ...
+    ## dttm  (1): date
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.

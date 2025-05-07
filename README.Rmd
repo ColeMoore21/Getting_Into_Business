@@ -1,5 +1,7 @@
 ---
-title: "README" 
+title: "Getting Into Business" 
+author: "<center><strong>Cole Moore</strong></center>"
+date: "<center>February 26, 2025</center>"
 output:  
 github_document: 
 pandoc_args: ["--wrap=none"] 
@@ -79,6 +81,8 @@ The dataset consists of **18 attributes** that describe various characteristics 
 ```{r}
 library(knitr)
 library(kableExtra)
+library(ggplot2)
+
 
 # Create a table for dataset attributes
 attributes_table <- data.frame(
@@ -123,6 +127,8 @@ library(dplyr)
 library(readr)
 library(knitr)
 library(kableExtra)
+library(ggplot2)
+
 
 # Load the dataset (make sure the CSV is in your working directory or adjust the path)
 df <- read_csv("USA Housing Dataset.csv")
@@ -150,5 +156,108 @@ kable(numeric_summary, digits = 2, caption = "Summary Statistics - Numeric Varia
   column_spec(1, bold = TRUE)
 ```
 
+---
+
+### **Missing and Empty Values**
+
+In this section, we examine whether the dataset contains any missing (`NA`) or empty (`""`) values and discuss how to handle them appropriately.
+
+```{r}
+# Count missing or empty values in each column
+# Identify missing (NA) values for all columns
+missing_na <- sapply(df, function(x) sum(is.na(x)))
+
+# Identify empty strings only for character columns
+missing_empty <- sapply(df, function(x) {
+  if (is.character(x)) sum(x == "")
+  else 0
+})
+
+# Combine results
+na_summary <- data.frame(
+  Variable = names(df),
+  Missing_Values = missing_na + missing_empty
+)
+
+# Display formatted table
+kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
+  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
+  column_spec(1, bold = TRUE)
+
+na_summary <- data.frame(Variable = names(na_summary), Missing_Values = na_summary)
+
+# Display as formatted table
+kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
+  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+```{r}
+ggplot(df, aes(x = price)) +
+  geom_histogram(fill = "skyblue", bins = 30, color = "black") +
+  labs(title = "Distribution of Home Prices", x = "Price (USD)", y = "Count")
+
+ggplot(df, aes(x = factor(bedrooms), y = price)) +
+  geom_boxplot(fill = "lightgreen") +
+  labs(title = "Price by Number of Bedrooms", x = "Bedrooms", y = "Price (USD)")
+
+ggplot(df, aes(x = sqft_living, y = price)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "darkred") +
+  labs(title = "Price vs. Square Footage", x = "Living Area (sqft)", y = "Price (USD)")
+```
+
+---
+
+### **3. Expanding Your Investment Knowledge**
+
+While this dataset offers a great snapshot of property characteristics and prices, supplementing it with additional data sources can provide deeper insights and improve investment decisions.
+
+#### Additional Dataset: Zillow Home Value Index (ZHVI)
+
+- **Source:** [Zillow Research – ZHVI Data](https://www.zillow.com/research/data/)
+- **Description:** The Zillow Home Value Index (ZHVI) tracks monthly median home values across regions, including ZIP codes, cities, counties, and metropolitan areas.
+
+#### Why is this dataset useful?
+
+- It provides time series data, allowing investors to analyze historical price trends and forecast future appreciation.
+- It includes geographic variation, letting investors compare how property values change over time in different markets.
+
+#### How does it complement your current data?
+
+- The current dataset is cross-sectional (a snapshot in time), while the ZHVI adds a temporal dimension.
+- By combining both, you could identify properties in regions that not only have good current value but also show strong long-term growth trends.
+- It can help refine location-based investment decisions, guiding you toward markets with the best growth potential.
+
+You can explore or download the ZHVI dataset here:  
+**[Zillow Home Value Index (ZHVI)](https://www.zillow.com/research/data/)**
+
+---
+
+### **4. Communicating Your Findings**
+
+This analysis helps make real estate investment more approachable by exploring key features that influence home prices, such as square footage, number of bedrooms, and location. We've also addressed data quality by checking for missing values and visualized trends that affect investment decisions.
+
+Even without prior real estate or data experience, readers can now:
+- Understand what attributes impact home value.
+- Identify how trends like larger living space or better condition contribute to pricing.
+- See how public datasets can be used to guide real-world investment strategy.
+
+Our dataset gave us a snapshot of housing conditions across U.S. states. By examining average prices and property features, and supplementing with growth trend data (like Zillow's ZHVI), investors can target areas with both good current value and long-term appreciation potential.
+
+---
+
+### **Reproducibility and Data Access**
+
+The dataset used in this project is available on Kaggle:
+
+**Data Link:** https://www.kaggle.com/datasets/fratzcan/usa-house-prices
+
+Since Kaggle requires login and sometimes API authentication, it’s recommended to manually download the CSV and load it like this:
+
+```{r}
+# Load CSV after manually downloading from Kaggle
+df <- read_csv("USA Housing Dataset.csv")
+```
 
 
