@@ -1,8 +1,9 @@
 ---
-title: "<center>Getting Into Business</center>"
-author: "<center><strong>Cole Moore</strong></center>"
-date: "<center>February 26, 2025</center>"
-output: html_document
+title: "README" 
+output:  
+github_document: 
+pandoc_args: ["--wrap=none"] 
+always_allow_html: true
 ---
 
 <style>
