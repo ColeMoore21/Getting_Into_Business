@@ -122,53 +122,37 @@ kable(attributes_table, caption = "Dataset Attributes and Descriptions") %>%
 ```
 
 ```{r}
-#install.packages("gt")
-```
-
-
-```{r}
 # Load necessary libraries
 library(dplyr)
 library(readr)
-library(gt)
-library(tidyr)  # Needed for pivoting data
+library(knitr)
+library(kableExtra)
 
-# Load the dataset (update the file path)
-file_path <- "~/Downloads/USA_Housing_Dataset.csv"
-df <- read_csv(file.choose())
+# Load the dataset (make sure the CSV is in your working directory or adjust the path)
+df <- read_csv("USA Housing Dataset.csv")
 
 # Select numeric columns
 numeric_df <- df %>%
   select(where(is.numeric))
 
-# Generate summary statistics using reframe() to avoid errors
-numeric_summary <- numeric_df %>%
-  reframe(
-    Variable = names(.),
-    Count = sapply(., function(x) sum(!is.na(x))),
-    Mean = sapply(., mean, na.rm = TRUE),
-    SD = sapply(., sd, na.rm = TRUE),
-    Min = sapply(., min, na.rm = TRUE),
-    Q1 = sapply(., quantile, 0.25, na.rm = TRUE),
-    Median = sapply(., median, na.rm = TRUE),
-    Q3 = sapply(., quantile, 0.75, na.rm = TRUE),
-    Max = sapply(., max, na.rm = TRUE)
-  )
+# Generate summary statistics
+numeric_summary <- data.frame(
+  Variable = names(numeric_df),
+  Count = sapply(numeric_df, function(x) sum(!is.na(x))),
+  Mean = sapply(numeric_df, mean, na.rm = TRUE),
+  SD = sapply(numeric_df, sd, na.rm = TRUE),
+  Min = sapply(numeric_df, min, na.rm = TRUE),
+  Q1 = sapply(numeric_df, quantile, probs = 0.25, na.rm = TRUE),
+  Median = sapply(numeric_df, median, na.rm = TRUE),
+  Q3 = sapply(numeric_df, quantile, probs = 0.75, na.rm = TRUE),
+  Max = sapply(numeric_df, max, na.rm = TRUE)
+)
 
-# Create a nicely formatted table with gt
-numeric_summary %>%
-  gt() %>%
-  tab_header(title = "Summary Statistics - Numeric Variables") %>%
-  fmt_number(columns = -1, decimals = 2) %>%
-  tab_options(
-    table.border.top.color = "black",
-    table.border.bottom.color = "black",
-    row.striping.include_table_body = TRUE
-  )
-
-
+# Display as a formatted table using kable
+kable(numeric_summary, digits = 2, caption = "Summary Statistics - Numeric Variables") %>%
+  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
+  column_spec(1, bold = TRUE)
 ```
-
 
 
 
