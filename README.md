@@ -1,9 +1,3 @@
-<style>
-  body { font-family: "Times New Roman", Times, serif; line-height: 1.6; }
-  h1, h2, h3 { color: #2C3E50; font-family: "Times New Roman", Times, serif; }
-  strong { color: #34495E; }
-</style>
-
 ### **Dataset Overview**
 
 **<strong>When was the data collected?</strong>**
