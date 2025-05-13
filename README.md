@@ -123,7 +123,20 @@ Sqft Basement</td>
 <!-- -->
 
     library(knitr)
+
+    ## Warning: package 'knitr' was built under R version 4.3.3
+
     library(kableExtra)
+
+    ## Warning: package 'kableExtra' was built under R version 4.3.3
+
+    ## 
+    ## Attaching package: 'kableExtra'
+
+    ## The following object is masked from 'package:dplyr':
+    ## 
+    ##     group_rows
+
     library(ggplot2)
 
 
@@ -1415,13 +1428,13 @@ country
       geom_histogram(fill = "skyblue", bins = 30, color = "black") +
       labs(title = "Distribution of Home Prices", x = "Price (USD)", y = "Count")
 
-![](README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](README_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
     ggplot(df, aes(x = factor(bedrooms), y = price)) +
       geom_boxplot(fill = "lightgreen") +
       labs(title = "Price by Number of Bedrooms", x = "Bedrooms", y = "Price (USD)")
 
-![](README_files/figure-markdown_strict/unnamed-chunk-4-2.png)
+![](README_files/figure-markdown_strict/unnamed-chunk-9-2.png)
 
     ggplot(df, aes(x = sqft_living, y = price)) +
       geom_point(alpha = 0.5) +
@@ -1430,7 +1443,7 @@ country
 
     ## `geom_smooth()` using formula = 'y ~ x'
 
-![](README_files/figure-markdown_strict/unnamed-chunk-4-3.png)
+![](README_files/figure-markdown_strict/unnamed-chunk-9-3.png)
 
 ------------------------------------------------------------------------
 
