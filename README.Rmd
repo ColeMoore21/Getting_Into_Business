@@ -204,6 +204,7 @@ ggplot(df, aes(x = price)) +
   geom_histogram(fill = "skyblue", bins = 30, color = "black") +
   labs(title = "Distribution of Home Prices", x = "Price (USD)", y = "Count")
 ```
+
 ** Insight:** Most homes are priced under $600,000, with a clear right-skewed distribution. This suggests a small subset of high-end homes push the average upward.
 
 ####  How does the number of bedrooms affect home prices?
@@ -214,6 +215,7 @@ ggplot(df, aes(x = factor(bedrooms), y = price)) +
   geom_boxplot(fill = "lightgreen") +
   labs(title = "Price by Number of Bedrooms", x = "Bedrooms", y = "Price (USD)")
 ```
+
 ** Insight:** Homes with more bedrooms generally have higher prices, but there's substantial overlap. This suggests that other features (like square footage or location) also significantly affect price.
 
 ####  Is there a relationship between square footage and price?
@@ -225,6 +227,7 @@ ggplot(df, aes(x = sqft_living, y = price)) +
   geom_smooth(method = "lm", se = FALSE, color = "darkred") +
   labs(title = "Price vs. Living Area", x = "Living Area (sqft)", y = "Price (USD)")
 ```
+
 ** Insight:** There is a strong positive relationship between living area and price. Larger homes tend to be worth more, though with increasing variability at higher square footage levels.
 
 ---
