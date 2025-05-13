@@ -192,20 +192,43 @@ kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
   column_spec(1, bold = TRUE)
 ```
 
+---
+
+### **Exploratory Data Analysis**
+
+####  What is the distribution of home prices in the dataset?
+Understanding the distribution of home prices helps identify typical price points and outliers — essential for evaluating affordability and investment potential.
+
 ```{r}
 ggplot(df, aes(x = price)) +
   geom_histogram(fill = "skyblue", bins = 30, color = "black") +
   labs(title = "Distribution of Home Prices", x = "Price (USD)", y = "Count")
+```
+** Insight:** Most homes are priced under $600,000, with a clear right-skewed distribution. This suggests a small subset of high-end homes push the average upward.
 
+####  How does the number of bedrooms affect home prices?
+Bedrooms are a primary factor buyers consider. This plot explores whether more bedrooms tend to increase a property's market value.
+
+```{r}
 ggplot(df, aes(x = factor(bedrooms), y = price)) +
   geom_boxplot(fill = "lightgreen") +
   labs(title = "Price by Number of Bedrooms", x = "Bedrooms", y = "Price (USD)")
+```
+** Insight:** Homes with more bedrooms generally have higher prices, but there's substantial overlap. This suggests that other features (like square footage or location) also significantly affect price.
 
+####  Is there a relationship between square footage and price?
+We hypothesize that larger homes command higher prices. Let's visualize the relationship between interior living space and price.
+
+```{r}
 ggplot(df, aes(x = sqft_living, y = price)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", se = FALSE, color = "darkred") +
-  labs(title = "Price vs. Square Footage", x = "Living Area (sqft)", y = "Price (USD)")
+  labs(title = "Price vs. Living Area", x = "Living Area (sqft)", y = "Price (USD)")
 ```
+** Insight:** There is a strong positive relationship between living area and price. Larger homes tend to be worth more, though with increasing variability at higher square footage levels.
+
+---
+
 
 ---
 
