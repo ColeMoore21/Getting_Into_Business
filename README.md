@@ -1,3 +1,12 @@
+Getting Into Business
+================
+<center>  
+<strong>Cole Moore</strong>  
+</center>
+<center>  
+February 26, 2025  
+</center>
+
 ### **Dataset Overview**
 
 **<strong>When was the data collected?</strong>**
@@ -22,10 +31,10 @@ Zillow’s **Economic Research Team** gathers, refines, and publishes
 housing and economic data from both **public and proprietary sources**.
 The core of Zillow’s data comes from:
 
--   **Public property records** (deeds, parcel information, transaction
-    history).  
--   **Internal Zillow market analyses** using proprietary algorithms.  
--   **Government and private housing reports** for contextual insights.
+- **Public property records** (deeds, parcel information, transaction
+  history).  
+- **Internal Zillow market analyses** using proprietary algorithms.  
+- **Government and private housing reports** for contextual insights.
 
 These sources are used to calculate various housing metrics, explained
 in the next section.
@@ -39,39 +48,38 @@ in the next section.
 The dataset consists of **18 attributes** that describe various
 characteristics of properties:
 
--   **Date:** The date the property was sold.  
--   **Price:** The sale price of the property in USD, serving as the
-    target variable in housing market analyses.  
--   **Bedroom:** The total number of bedrooms in the property,
-    indicating the home’s capacity.  
--   **Bathroom:** The total number of bathrooms in the property,
-    including full and half-baths.  
--   **Sqft\_living:** The total interior square footage of the home,
-    representing the livable space.  
--   **Sqft\_lot:** The total land area of the property, including the
-    house and yard.  
--   **Floors:** The number of floors in the home, influencing the layout
-    and design.  
--   **Waterfront:** A binary variable indicating whether the property is
-    located on the waterfront (1 = Yes, 0 = No).  
--   **View:** An index ranging from **0 to 4**, where higher values
-    indicate a better quality view from the property.  
--   **Condition:** An index ranging from **1 to 5**, where **1**
-    represents poor condition and **5** represents excellent
-    condition.  
--   **Sqft Above:** The total square footage of the home **excluding**
-    the basement, reflecting the main living area.  
--   **Sqft Basement:** The total square footage of the basement area,
-    which may or may not be finished living space.  
--   **Yr Built:** The year in which the property was originally
-    constructed.  
--   **Yr Renovated:** The most recent year in which the property
-    underwent major renovations or updates.  
--   **Street:** The street address of the property.  
--   **City:** The city where the property is located.  
--   **Statezip:** A combined variable containing both the **state** and
-    **zip code** of the property.  
--   **Country:** The country where the property is located.
+- **Date:** The date the property was sold.  
+- **Price:** The sale price of the property in USD, serving as the
+  target variable in housing market analyses.  
+- **Bedroom:** The total number of bedrooms in the property, indicating
+  the home’s capacity.  
+- **Bathroom:** The total number of bathrooms in the property, including
+  full and half-baths.  
+- **Sqft_living:** The total interior square footage of the home,
+  representing the livable space.  
+- **Sqft_lot:** The total land area of the property, including the house
+  and yard.  
+- **Floors:** The number of floors in the home, influencing the layout
+  and design.  
+- **Waterfront:** A binary variable indicating whether the property is
+  located on the waterfront (1 = Yes, 0 = No).  
+- **View:** An index ranging from **0 to 4**, where higher values
+  indicate a better quality view from the property.  
+- **Condition:** An index ranging from **1 to 5**, where **1**
+  represents poor condition and **5** represents excellent condition.  
+- **Sqft Above:** The total square footage of the home **excluding** the
+  basement, reflecting the main living area.  
+- **Sqft Basement:** The total square footage of the basement area,
+  which may or may not be finished living space.  
+- **Yr Built:** The year in which the property was originally
+  constructed.  
+- **Yr Renovated:** The most recent year in which the property underwent
+  major renovations or updates.  
+- **Street:** The street address of the property.  
+- **City:** The city where the property is located.  
+- **Statezip:** A combined variable containing both the **state** and
+  **zip code** of the property.  
+- **Country:** The country where the property is located.
 
 ------------------------------------------------------------------------
 
@@ -79,54 +87,31 @@ characteristics of properties:
 
 **<strong>What type of data do these attributes contain?</strong>**
 
-<table>
-<colgroup>
-<col style="width: 48%" />
-<col style="width: 51%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Data Type</strong></th>
-<th><strong>Attributes</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Nominal</strong></td>
-<td>Street, City, Statezip, Country, Waterfront</td>
-</tr>
-<tr class="even">
-<td><strong>Ordinal</strong></td>
-<td>View, Condition</td>
-</tr>
-<tr class="odd">
-<td><strong>Interval</strong></td>
-<td>Yr Built, Yr Renovated</td>
-</tr>
-<tr class="even">
-<td><strong>Ratio</strong></td>
-<td>Price, Bedroom, Bathroom, Sqft_living, Sqft_lot, Floors, Sqft Above,
-Sqft Basement</td>
-</tr>
-</tbody>
-</table>
+| **Data Type** | **Attributes**                                                                     |
+|---------------|------------------------------------------------------------------------------------|
+| **Nominal**   | Street, City, Statezip, Country, Waterfront                                        |
+| **Ordinal**   | View, Condition                                                                    |
+| **Interval**  | Yr Built, Yr Renovated                                                             |
+| **Ratio**     | Price, Bedroom, Bathroom, Sqft_living, Sqft_lot, Floors, Sqft Above, Sqft Basement |
 
--   **Nominal:** Categorical variables without a meaningful order, such
-    as property location attributes.  
--   **Ordinal:** Ranked variables with a meaningful order but uneven
-    intervals, such as **View** and **Condition** ratings.  
--   **Interval:** Numeric variables with meaningful differences but no
-    true zero, such as **Yr Built** and **Yr Renovated**.  
--   **Ratio:** Continuous numerical attributes with a true zero, such as
-    **Price**, **Sqft\_living**, and **Sqft\_lot**.
+- **Nominal:** Categorical variables without a meaningful order, such as
+  property location attributes.  
+- **Ordinal:** Ranked variables with a meaningful order but uneven
+  intervals, such as **View** and **Condition** ratings.  
+- **Interval:** Numeric variables with meaningful differences but no
+  true zero, such as **Yr Built** and **Yr Renovated**.  
+- **Ratio:** Continuous numerical attributes with a true zero, such as
+  **Price**, **Sqft_living**, and **Sqft_lot**.
 
-<!-- -->
-
-    library(knitr)
+``` r
+library(knitr)
+```
 
     ## Warning: package 'knitr' was built under R version 4.3.3
 
-    library(kableExtra)
+``` r
+library(kableExtra)
+```
 
     ## Warning: package 'kableExtra' was built under R version 4.3.3
 
@@ -137,44 +122,46 @@ Sqft Basement</td>
     ## 
     ##     group_rows
 
-    library(ggplot2)
+``` r
+library(ggplot2)
 
 
-    # Create a table for dataset attributes
-    attributes_table <- data.frame(
-      Attribute = c("Date", "Price", "Bedroom", "Bathroom", "Sqft_living", "Sqft_lot", "Floors", "Waterfront",
-                    "View", "Condition", "Sqft Above", "Sqft Basement", "Yr Built", "Yr Renovated", "Street", "City",
-                    "Statezip", "Country"),
-      Description = c("Date the property was sold",
-                      "Sale price of the property in USD (target variable)",
-                      "Number of bedrooms in the property",
-                      "Number of bathrooms in the property (full and half-baths)",
-                      "Total interior square footage of the home",
-                      "Total land area of the property, including the house and yard",
-                      "Number of floors in the home",
-                      "Binary indicator for waterfront location (1 = Yes, 0 = No)",
-                      "Index (0-4) rating the quality of the property's view",
-                      "Index (1-5) rating the condition of the property",
-                      "Total square footage of the home excluding the basement",
-                      "Total square footage of the basement area",
-                      "Year the property was originally constructed",
-                      "Year of the most recent renovation",
-                      "Street address of the property",
-                      "City where the property is located",
-                      "State and ZIP code of the property",
-                      "Country where the property is located"),
-      DataType = c("Date", "Ratio", "Ratio", "Ratio", "Ratio", "Ratio", "Ratio", "Nominal",
-                   "Ordinal", "Ordinal", "Ratio", "Ratio", "Interval", "Interval", "Nominal", "Nominal",
-                   "Nominal", "Nominal")
-    )
+# Create a table for dataset attributes
+attributes_table <- data.frame(
+  Attribute = c("Date", "Price", "Bedroom", "Bathroom", "Sqft_living", "Sqft_lot", "Floors", "Waterfront",
+                "View", "Condition", "Sqft Above", "Sqft Basement", "Yr Built", "Yr Renovated", "Street", "City",
+                "Statezip", "Country"),
+  Description = c("Date the property was sold",
+                  "Sale price of the property in USD (target variable)",
+                  "Number of bedrooms in the property",
+                  "Number of bathrooms in the property (full and half-baths)",
+                  "Total interior square footage of the home",
+                  "Total land area of the property, including the house and yard",
+                  "Number of floors in the home",
+                  "Binary indicator for waterfront location (1 = Yes, 0 = No)",
+                  "Index (0-4) rating the quality of the property's view",
+                  "Index (1-5) rating the condition of the property",
+                  "Total square footage of the home excluding the basement",
+                  "Total square footage of the basement area",
+                  "Year the property was originally constructed",
+                  "Year of the most recent renovation",
+                  "Street address of the property",
+                  "City where the property is located",
+                  "State and ZIP code of the property",
+                  "Country where the property is located"),
+  DataType = c("Date", "Ratio", "Ratio", "Ratio", "Ratio", "Ratio", "Ratio", "Nominal",
+               "Ordinal", "Ordinal", "Ratio", "Ratio", "Interval", "Interval", "Nominal", "Nominal",
+               "Nominal", "Nominal")
+)
 
-    # Format and display the table
-    kable(attributes_table, caption = "Dataset Attributes and Descriptions") %>%
-      kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = TRUE) %>%
-      column_spec(1, bold = TRUE, width = "15%") %>%
-      column_spec(2, italic = TRUE, width = "65%") %>%
-      column_spec(3, width = "20%") %>%
-      row_spec(0, background = "lightgray")
+# Format and display the table
+kable(attributes_table, caption = "Dataset Attributes and Descriptions") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = TRUE) %>%
+  column_spec(1, bold = TRUE, width = "15%") %>%
+  column_spec(2, italic = TRUE, width = "65%") %>%
+  column_spec(3, width = "20%") %>%
+  row_spec(0, background = "lightgray")
+```
 
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -240,7 +227,7 @@ Ratio
 </tr>
 <tr>
 <td style="text-align:left;width: 15%; font-weight: bold;">
-Sqft\_living
+Sqft_living
 </td>
 <td style="text-align:left;width: 65%; font-style: italic;">
 Total interior square footage of the home
@@ -251,7 +238,7 @@ Ratio
 </tr>
 <tr>
 <td style="text-align:left;width: 15%; font-weight: bold;">
-Sqft\_lot
+Sqft_lot
 </td>
 <td style="text-align:left;width: 65%; font-style: italic;">
 Total land area of the property, including the house and yard
@@ -395,48 +382,57 @@ Nominal
 </tbody>
 </table>
 
-    # Load necessary libraries
-    library(dplyr)
-    library(readr)
-    library(knitr)
-    library(kableExtra)
-    library(ggplot2)
+``` r
+# Load necessary libraries
+library(dplyr)
+library(readr)
+```
+
+    ## Warning: package 'readr' was built under R version 4.3.3
+
+``` r
+library(knitr)
+library(kableExtra)
+library(ggplot2)
 
 
-    # Load the dataset (make sure the CSV is in your working directory or adjust the path)
-    df <- read_csv("USA Housing Dataset.csv")
+# Load the dataset (make sure the CSV is in your working directory or adjust the path)
+df <- read_csv("USA Housing Dataset.csv")
+```
 
     ## Rows: 4140 Columns: 18
-    ## ── Column specification ───────────────────────────────────────────────────────────────────────────────
+    ## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────
     ## Delimiter: ","
     ## chr   (4): street, city, statezip, country
-    ## dbl  (13): price, bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition, ...
+    ## dbl  (13): price, bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition, sqft_above, sqft_basement, y...
     ## dttm  (1): date
     ## 
     ## ℹ Use `spec()` to retrieve the full column specification for this data.
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
-    # Select numeric columns
-    numeric_df <- df %>%
-      select(where(is.numeric))
+``` r
+# Select numeric columns
+numeric_df <- df %>%
+  select(where(is.numeric))
 
-    # Generate summary statistics
-    numeric_summary <- data.frame(
-      Variable = names(numeric_df),
-      Count = sapply(numeric_df, function(x) sum(!is.na(x))),
-      Mean = sapply(numeric_df, mean, na.rm = TRUE),
-      SD = sapply(numeric_df, sd, na.rm = TRUE),
-      Min = sapply(numeric_df, min, na.rm = TRUE),
-      Q1 = sapply(numeric_df, quantile, probs = 0.25, na.rm = TRUE),
-      Median = sapply(numeric_df, median, na.rm = TRUE),
-      Q3 = sapply(numeric_df, quantile, probs = 0.75, na.rm = TRUE),
-      Max = sapply(numeric_df, max, na.rm = TRUE)
-    )
+# Generate summary statistics
+numeric_summary <- data.frame(
+  Variable = names(numeric_df),
+  Count = sapply(numeric_df, function(x) sum(!is.na(x))),
+  Mean = sapply(numeric_df, mean, na.rm = TRUE),
+  SD = sapply(numeric_df, sd, na.rm = TRUE),
+  Min = sapply(numeric_df, min, na.rm = TRUE),
+  Q1 = sapply(numeric_df, quantile, probs = 0.25, na.rm = TRUE),
+  Median = sapply(numeric_df, median, na.rm = TRUE),
+  Q3 = sapply(numeric_df, quantile, probs = 0.75, na.rm = TRUE),
+  Max = sapply(numeric_df, max, na.rm = TRUE)
+)
 
-    # Display as a formatted table using kable
-    kable(numeric_summary, digits = 2, caption = "Summary Statistics - Numeric Variables") %>%
-      kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
-      column_spec(1, bold = TRUE)
+# Display as a formatted table using kable
+kable(numeric_summary, digits = 2, caption = "Summary Statistics - Numeric Variables") %>%
+  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
+  column_spec(1, bold = TRUE)
+```
 
 <table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -574,10 +570,10 @@ bathrooms
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_living
+sqft_living
 </td>
 <td style="text-align:left;">
-sqft\_living
+sqft_living
 </td>
 <td style="text-align:right;">
 4140
@@ -606,10 +602,10 @@ sqft\_living
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_lot
+sqft_lot
 </td>
 <td style="text-align:left;">
-sqft\_lot
+sqft_lot
 </td>
 <td style="text-align:right;">
 4140
@@ -766,10 +762,10 @@ condition
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_above
+sqft_above
 </td>
 <td style="text-align:left;">
-sqft\_above
+sqft_above
 </td>
 <td style="text-align:right;">
 4140
@@ -798,10 +794,10 @@ sqft\_above
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_basement
+sqft_basement
 </td>
 <td style="text-align:left;">
-sqft\_basement
+sqft_basement
 </td>
 <td style="text-align:right;">
 4140
@@ -830,10 +826,10 @@ sqft\_basement
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-yr\_built
+yr_built
 </td>
 <td style="text-align:left;">
-yr\_built
+yr_built
 </td>
 <td style="text-align:right;">
 4140
@@ -862,10 +858,10 @@ yr\_built
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-yr\_renovated
+yr_renovated
 </td>
 <td style="text-align:left;">
-yr\_renovated
+yr_renovated
 </td>
 <td style="text-align:right;">
 4140
@@ -903,26 +899,28 @@ In this section, we examine whether the dataset contains any missing
 (`NA`) or empty (`""`) values and discuss how to handle them
 appropriately.
 
-    # Count missing or empty values in each column
-    # Identify missing (NA) values for all columns
-    missing_na <- sapply(df, function(x) sum(is.na(x)))
+``` r
+# Count missing or empty values in each column
+# Identify missing (NA) values for all columns
+missing_na <- sapply(df, function(x) sum(is.na(x)))
 
-    # Identify empty strings only for character columns
-    missing_empty <- sapply(df, function(x) {
-      if (is.character(x)) sum(x == "")
-      else 0
-    })
+# Identify empty strings only for character columns
+missing_empty <- sapply(df, function(x) {
+  if (is.character(x)) sum(x == "")
+  else 0
+})
 
-    # Combine results
-    na_summary <- data.frame(
-      Variable = names(df),
-      Missing_Values = missing_na + missing_empty
-    )
+# Combine results
+na_summary <- data.frame(
+  Variable = names(df),
+  Missing_Values = missing_na + missing_empty
+)
 
-    # Display formatted table
-    kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
-      kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
-      column_spec(1, bold = TRUE)
+# Display formatted table
+kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
+  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
+  column_spec(1, bold = TRUE)
+```
 
 <table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -936,7 +934,7 @@ Missing or Empty Values by Variable
 Variable
 </th>
 <th style="text-align:right;">
-Missing\_Values
+Missing_Values
 </th>
 </tr>
 </thead>
@@ -987,10 +985,10 @@ bathrooms
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_living
+sqft_living
 </td>
 <td style="text-align:left;">
-sqft\_living
+sqft_living
 </td>
 <td style="text-align:right;">
 0
@@ -998,10 +996,10 @@ sqft\_living
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_lot
+sqft_lot
 </td>
 <td style="text-align:left;">
-sqft\_lot
+sqft_lot
 </td>
 <td style="text-align:right;">
 0
@@ -1053,10 +1051,10 @@ condition
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_above
+sqft_above
 </td>
 <td style="text-align:left;">
-sqft\_above
+sqft_above
 </td>
 <td style="text-align:right;">
 0
@@ -1064,10 +1062,10 @@ sqft\_above
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_basement
+sqft_basement
 </td>
 <td style="text-align:left;">
-sqft\_basement
+sqft_basement
 </td>
 <td style="text-align:right;">
 0
@@ -1075,10 +1073,10 @@ sqft\_basement
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-yr\_built
+yr_built
 </td>
 <td style="text-align:left;">
-yr\_built
+yr_built
 </td>
 <td style="text-align:right;">
 0
@@ -1086,10 +1084,10 @@ yr\_built
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-yr\_renovated
+yr_renovated
 </td>
 <td style="text-align:left;">
-yr\_renovated
+yr_renovated
 </td>
 <td style="text-align:right;">
 0
@@ -1142,12 +1140,14 @@ country
 </tbody>
 </table>
 
-    na_summary <- data.frame(Variable = names(na_summary), Missing_Values = na_summary)
+``` r
+na_summary <- data.frame(Variable = names(na_summary), Missing_Values = na_summary)
 
-    # Display as formatted table
-    kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
-      kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
-      column_spec(1, bold = TRUE)
+# Display as formatted table
+kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
+  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
+  column_spec(1, bold = TRUE)
+```
 
 <table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1161,10 +1161,10 @@ Missing or Empty Values by Variable
 Variable
 </th>
 <th style="text-align:left;">
-Missing\_Values.Variable
+Missing_Values.Variable
 </th>
 <th style="text-align:right;">
-Missing\_Values.Missing\_Values
+Missing_Values.Missing_Values
 </th>
 </tr>
 </thead>
@@ -1188,7 +1188,7 @@ date
 price
 </td>
 <td style="text-align:left;">
-Missing\_Values
+Missing_Values
 </td>
 <td style="text-align:left;">
 price
@@ -1216,7 +1216,7 @@ bedrooms
 bathrooms
 </td>
 <td style="text-align:left;">
-Missing\_Values
+Missing_Values
 </td>
 <td style="text-align:left;">
 bathrooms
@@ -1227,13 +1227,13 @@ bathrooms
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_living
+sqft_living
 </td>
 <td style="text-align:left;">
 Variable
 </td>
 <td style="text-align:left;">
-sqft\_living
+sqft_living
 </td>
 <td style="text-align:right;">
 0
@@ -1241,13 +1241,13 @@ sqft\_living
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_lot
+sqft_lot
 </td>
 <td style="text-align:left;">
-Missing\_Values
+Missing_Values
 </td>
 <td style="text-align:left;">
-sqft\_lot
+sqft_lot
 </td>
 <td style="text-align:right;">
 0
@@ -1272,7 +1272,7 @@ floors
 waterfront
 </td>
 <td style="text-align:left;">
-Missing\_Values
+Missing_Values
 </td>
 <td style="text-align:left;">
 waterfront
@@ -1300,7 +1300,7 @@ view
 condition
 </td>
 <td style="text-align:left;">
-Missing\_Values
+Missing_Values
 </td>
 <td style="text-align:left;">
 condition
@@ -1311,13 +1311,13 @@ condition
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_above
+sqft_above
 </td>
 <td style="text-align:left;">
 Variable
 </td>
 <td style="text-align:left;">
-sqft\_above
+sqft_above
 </td>
 <td style="text-align:right;">
 0
@@ -1325,13 +1325,13 @@ sqft\_above
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-sqft\_basement
+sqft_basement
 </td>
 <td style="text-align:left;">
-Missing\_Values
+Missing_Values
 </td>
 <td style="text-align:left;">
-sqft\_basement
+sqft_basement
 </td>
 <td style="text-align:right;">
 0
@@ -1339,13 +1339,13 @@ sqft\_basement
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-yr\_built
+yr_built
 </td>
 <td style="text-align:left;">
 Variable
 </td>
 <td style="text-align:left;">
-yr\_built
+yr_built
 </td>
 <td style="text-align:right;">
 0
@@ -1353,13 +1353,13 @@ yr\_built
 </tr>
 <tr>
 <td style="text-align:left;font-weight: bold;">
-yr\_renovated
+yr_renovated
 </td>
 <td style="text-align:left;">
-Missing\_Values
+Missing_Values
 </td>
 <td style="text-align:left;">
-yr\_renovated
+yr_renovated
 </td>
 <td style="text-align:right;">
 0
@@ -1384,7 +1384,7 @@ street
 city
 </td>
 <td style="text-align:left;">
-Missing\_Values
+Missing_Values
 </td>
 <td style="text-align:left;">
 city
@@ -1412,7 +1412,7 @@ statezip
 country
 </td>
 <td style="text-align:left;">
-Missing\_Values
+Missing_Values
 </td>
 <td style="text-align:left;">
 country
@@ -1424,26 +1424,66 @@ country
 </tbody>
 </table>
 
-    ggplot(df, aes(x = price)) +
-      geom_histogram(fill = "skyblue", bins = 30, color = "black") +
-      labs(title = "Distribution of Home Prices", x = "Price (USD)", y = "Count")
+------------------------------------------------------------------------
 
-![](README_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+### **Exploratory Data Analysis**
 
-    ggplot(df, aes(x = factor(bedrooms), y = price)) +
-      geom_boxplot(fill = "lightgreen") +
-      labs(title = "Price by Number of Bedrooms", x = "Bedrooms", y = "Price (USD)")
+#### What is the distribution of home prices in the dataset?
 
-![](README_files/figure-markdown_strict/unnamed-chunk-9-2.png)
+Understanding the distribution of home prices helps identify typical
+price points and outliers — essential for evaluating affordability and
+investment potential.
 
-    ggplot(df, aes(x = sqft_living, y = price)) +
-      geom_point(alpha = 0.5) +
-      geom_smooth(method = "lm", se = FALSE, color = "darkred") +
-      labs(title = "Price vs. Square Footage", x = "Living Area (sqft)", y = "Price (USD)")
+``` r
+ggplot(df, aes(x = price)) +
+  geom_histogram(fill = "skyblue", bins = 30, color = "black") +
+  labs(title = "Distribution of Home Prices", x = "Price (USD)", y = "Count")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
+\*\* Insight:\*\* Most homes are priced under \$600,000, with a clear
+right-skewed distribution. This suggests a small subset of high-end
+homes push the average upward.
+
+#### How does the number of bedrooms affect home prices?
+
+Bedrooms are a primary factor buyers consider. This plot explores
+whether more bedrooms tend to increase a property’s market value.
+
+``` r
+ggplot(df, aes(x = factor(bedrooms), y = price)) +
+  geom_boxplot(fill = "lightgreen") +
+  labs(title = "Price by Number of Bedrooms", x = "Bedrooms", y = "Price (USD)")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+\*\* Insight:\*\* Homes with more bedrooms generally have higher prices,
+but there’s substantial overlap. This suggests that other features (like
+square footage or location) also significantly affect price.
+
+#### Is there a relationship between square footage and price?
+
+We hypothesize that larger homes command higher prices. Let’s visualize
+the relationship between interior living space and price.
+
+``` r
+ggplot(df, aes(x = sqft_living, y = price)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "darkred") +
+  labs(title = "Price vs. Living Area", x = "Living Area (sqft)", y = "Price (USD)")
+```
 
     ## `geom_smooth()` using formula = 'y ~ x'
 
-![](README_files/figure-markdown_strict/unnamed-chunk-9-3.png)
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
+\*\* Insight:\*\* There is a strong positive relationship between living
+area and price. Larger homes tend to be worth more, though with
+increasing variability at higher square footage levels.
+
+------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
@@ -1455,28 +1495,28 @@ deeper insights and improve investment decisions.
 
 #### Additional Dataset: Zillow Home Value Index (ZHVI)
 
--   **Source:** [Zillow Research – ZHVI
-    Data](https://www.zillow.com/research/data/)
--   **Description:** The Zillow Home Value Index (ZHVI) tracks monthly
-    median home values across regions, including ZIP codes, cities,
-    counties, and metropolitan areas.
+- **Source:** [Zillow Research – ZHVI
+  Data](https://www.zillow.com/research/data/)
+- **Description:** The Zillow Home Value Index (ZHVI) tracks monthly
+  median home values across regions, including ZIP codes, cities,
+  counties, and metropolitan areas.
 
 #### Why is this dataset useful?
 
--   It provides time series data, allowing investors to analyze
-    historical price trends and forecast future appreciation.
--   It includes geographic variation, letting investors compare how
-    property values change over time in different markets.
+- It provides time series data, allowing investors to analyze historical
+  price trends and forecast future appreciation.
+- It includes geographic variation, letting investors compare how
+  property values change over time in different markets.
 
 #### How does it complement your current data?
 
--   The current dataset is cross-sectional (a snapshot in time), while
-    the ZHVI adds a temporal dimension.
--   By combining both, you could identify properties in regions that not
-    only have good current value but also show strong long-term growth
-    trends.
--   It can help refine location-based investment decisions, guiding you
-    toward markets with the best growth potential.
+- The current dataset is cross-sectional (a snapshot in time), while the
+  ZHVI adds a temporal dimension.
+- By combining both, you could identify properties in regions that not
+  only have good current value but also show strong long-term growth
+  trends.
+- It can help refine location-based investment decisions, guiding you
+  toward markets with the best growth potential.
 
 You can explore or download the ZHVI dataset here:  
 **[Zillow Home Value Index
@@ -1514,14 +1554,16 @@ The dataset used in this project is available on Kaggle:
 Since Kaggle requires login and sometimes API authentication, it’s
 recommended to manually download the CSV and load it like this:
 
-    # Load CSV after manually downloading from Kaggle
-    df <- read_csv("USA Housing Dataset.csv")
+``` r
+# Load CSV after manually downloading from Kaggle
+df <- read_csv("USA Housing Dataset.csv")
+```
 
     ## Rows: 4140 Columns: 18
-    ## ── Column specification ───────────────────────────────────────────────────────────────────────────────
+    ## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────
     ## Delimiter: ","
     ## chr   (4): street, city, statezip, country
-    ## dbl  (13): price, bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition, ...
+    ## dbl  (13): price, bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront, view, condition, sqft_above, sqft_basement, y...
     ## dttm  (1): date
     ## 
     ## ℹ Use `spec()` to retrieve the full column specification for this data.
