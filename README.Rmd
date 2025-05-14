@@ -163,33 +163,53 @@ kable(numeric_summary, digits = 2, caption = "Summary Statistics - Numeric Varia
 In this section, we examine whether the dataset contains any missing (`NA`) or empty (`""`) values and discuss how to handle them appropriately.
 
 ```{r}
-# Count missing or empty values in each column
-# Identify missing (NA) values for all columns
+# Identify missing values
 missing_na <- sapply(df, function(x) sum(is.na(x)))
+missing_empty <- sapply(df, function(x) if (is.character(x)) sum(x == "") else 0)
 
-# Identify empty strings only for character columns
-missing_empty <- sapply(df, function(x) {
-  if (is.character(x)) sum(x == "")
-  else 0
-})
-
-# Combine results
 na_summary <- data.frame(
   Variable = names(df),
   Missing_Values = missing_na + missing_empty
 )
 
-# Display formatted table
-kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
-  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
-  column_spec(1, bold = TRUE)
+# Define a simple mode function
+calculate_mode <- function(x) {
+  ux <- unique(na.omit(x))
+  ux[which.max(tabulate(match(x, ux)))]
+}
 
-na_summary <- data.frame(Variable = names(na_summary), Missing_Values = na_summary)
+# Create summary for nominal variables (e.g., character columns)
+nominal_df <- df %>% select(where(is.character))
 
-# Display as formatted table
-kable(na_summary, caption = "Missing or Empty Values by Variable") %>%
-  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover")) %>%
-  column_spec(1, bold = TRUE)
+nominal_summary <- data.frame(
+  Variable = names(nominal_df),
+  Count = sapply(nominal_df, function(x) sum(!is.na(x))),
+  Missing = sapply(nominal_df, function(x) sum(is.na(x))),
+  Mode = sapply(nominal_df, calculate_mode)
+)
+
+# Create summary for numeric variables
+numeric_df <- df %>% select(where(is.numeric))
+
+numeric_summary <- numeric_df %>%
+  summarise(across(everything(), list(
+    Mean = ~mean(.x, na.rm = TRUE),
+    Median = ~median(.x, na.rm = TRUE),
+    SD = ~sd(.x, na.rm = TRUE),
+    Min = ~min(.x, na.rm = TRUE),
+    Max = ~max(.x, na.rm = TRUE)
+  ), .names = "{.col}_{.fn}"))
+
+# Render tables (optional: make sure kableExtra is installed/loaded)
+library(kableExtra)
+
+
+nominal_summary %>%
+  kable(format = "html", caption = "Summary Statistics - Nominal Variables") %>%
+  kable_styling(full_width = FALSE)
+
+
+
 ```
 
 ---
