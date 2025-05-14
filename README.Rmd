@@ -1,10 +1,8 @@
 ---
-title: "Getting Into Business" 
-author: "<center><strong>Cole Moore</strong></center>"
-date: "<center>February 26, 2025</center>"
-output:  
-github_document: 
-pandoc_args: ["--wrap=none"] 
+title: "README"
+output: 
+  github_document:
+    pandoc_args: ["--wrap=none"]
 always_allow_html: true
 ---
 
